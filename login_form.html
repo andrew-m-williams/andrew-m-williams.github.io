@@ -2,18 +2,122 @@
 
 <html>
 <head>
+	
+	<!-- Link to stylesheet for this modal form -->
+	<link rel="stylesheet" href="modalForm.css">
+	
 	<title>Login Form</title>
+
+	<!-- Firebase App is always required and must be first -->
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-app.js"></script>
+
+	<!-- Add additional services that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-database.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+		apiKey: "AIzaSyDEWTAiZ3zPnaynYDorI_oWps1BAyAwkHk",
+		authDomain: "ecommerce-user-db.firebaseapp.com",
+		databaseURL: "https://ecommerce-user-db.firebaseio.com",
+		projectId: "ecommerce-user-db",
+		storageBucket: "ecommerce-user-db.appspot.com",
+		messagingSenderId: "395225262852"
+		};
+		firebase.initializeApp(config);
+	</script>
+
+	<script type="text/javascript" src="login_firebase.js"></script>
+
 </head>
 <body>
 	<h1>E-Commerce</h1>
 	<h2>Login Form</h2>
-	<form>
-		Username:<br>
-		<input type="text" name="username_field"><br><br>
-		Password:<br>
-		<input type="text" name="password_field"><br><br>
-		<input type="submit" name="submit_button" value="Login">
-		<button>Sign Up</button>
-	</form>
+
+	<!-- Login button Stylized -->
+	<button onclick="document.getElementById('modalFormLogin').style.display='block'"
+	style="width:auto;">Login</button>
+
+	<!-- Sign Up button Stylized -->
+	<button onclick="document.getElementById('modalFormSignUp').style.display='block'"
+	style="width:auto;">Sign Up</button>
+
+
+	<!-- Modal Form container for sign ups -->
+	<div id="modalFormSignUp" class="modal">
+		<span onclick="document.getElementById('modalFormSignUp').style.display='none'"
+		class="close" title="Close Modal">&times;</span>
+		<div class="modal-content">
+			<div class="container">
+				<h1>Sign Up</h1>
+				<p>Create a new account below.</p>
+				<hr>
+				<label for="firstName"><b>First Name</b></label>
+				<input type="text" placeholder="Enter First Name" name="firstName" required>
+
+				<label for="lastName"><b>Last Name</b></label>
+				<input type="text" placeholder="Enter LastName" name="lastName" required>
+
+				<label for="email"><b>Email</b></label>
+				<input id="signUpEmail" type="text" placeholder="Enter Email" name="email" required>
+
+				<label for="password"><b>Password</b></label>
+				<input id="signUpPassword" type="password" placeholder="Enter Password" name="password" required>
+
+				<label for="passwordRepeat"><b>Repeat Password</b></label>
+				<input type="password" placeholder="Repeat Password" name="passwordRepeat" required>
+
+				<label>
+					<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">Remember Me
+				</label>
+
+				<p> By creating an account, you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+				<div class="clearfix">
+					<button type="button" onclick="document.getElementById('ModalFormSignUp').style.display='none'" class="cancelbtn">Cancel</button>
+					<button type="submit" class="signupbtn" onclick="handleSignUp()">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Form container for Logins -->
+	<div id="modalFormLogin" class="modal">
+		<span onclick="document.getElementById('modalFormLogin').style.display='none'"
+		class="close" title="Close Modal">&times;</span>
+		<form class="modal-content" action ="/action_page.php">
+			<div class="container">
+				<h1>Login</h1>
+				<p>Login to an existing account below.</p>
+				<hr>
+				<label for="email"><b>Email</b></label>
+				<input id="loginEmail" type="text" placeholder="Enter Email" name="email" required>
+
+				<label for="password"><b>Password</b></label>
+				<input id="loginPassword" type="text" placeholder="Enter Password" name="password" required>
+
+				<label>
+					<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">Remember Me
+				</label>
+
+				<div class="clearfix">
+					<button type="button" onclick="document.getElementById('modalFormLogin').style.display='none'"
+					class="cancelbtn">Cancel</button>
+					<button type="submit" class="signupbtn">Login</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+<!-- Script to close modal form when user clicks outside of it -->	
+<script>
+var modal = document.getElementById('modalForm');
+
+window.onclick = function(event) {
+	if(event.target == modal) {
+		modal.style.display = "none";
+	}
+}
+</script>
 </body>
 </html>
