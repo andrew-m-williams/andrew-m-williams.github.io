@@ -16,6 +16,12 @@
 	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
 
+    <!-- Custom fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+
 	<script>
 		// Initialize Firebase
 		var config = {
@@ -50,16 +56,21 @@
 </head>
 <body>
 	<div id="loginForm">
-		<h1>E-Commerce</h1>
-		<h2>Login Form</h2>
+		<header class="landing">
+			<div class="landing-container">
+				<h1><strong>E-Commerce</strong></h1>
+				<hr>
+				<p class="text-faded">Welcome to your crypto ecommerce shop!</p>
 
-		<!-- Login button Stylized -->
-		<button onclick="document.getElementById('modalFormLogin').style.display='block'"
-		style="width:auto;">Login</button>
+				<!-- Login button Stylized -->
+				<button class="landingbtn" onclick="document.getElementById('modalFormLogin').style.display='block'"
+				style="width:auto;">Login</button>
 
-		<!-- Sign Up button Stylized -->
-		<button onclick="document.getElementById('modalFormSignUp').style.display='block'"
-		style="width:auto;">Sign Up</button>
+				<!-- Sign Up button Stylized -->
+				<button class="landingbtn" onclick="document.getElementById('modalFormSignUp').style.display='block'"
+				style="width:auto;">Sign Up</button>
+			</div>
+		</header>
 
 		<!-- Modal Form container for Sign Ups -->
 		<div id="modalFormSignUp" class="modal">
@@ -92,7 +103,7 @@
 					<p> By creating an account, you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
 					<div class="clearfix">
-						<button type="button" onclick="document.getElementById('ModalFormSignUp').style.display='none'" class="cancelbtn">Cancel</button>
+						<button type="button" onclick="document.getElementById('modalFormSignUp').style.display='none'" class="cancelbtn">Cancel</button>
 						<button type="submit" class="signupbtn" onclick="handleSignUp()">Sign Up</button>
 					</div>
 				</div>
@@ -165,7 +176,7 @@
 
 	<!-- Script to close modal form when user clicks outside of it -->	
 	<script>
-	var modal = document.getElementById('modalForm');
+	var modal = document.getElementById('modalFormLogin');
 
 	window.onclick = function(event) {
 		if(event.target == modal) {
