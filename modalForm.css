@@ -52,6 +52,40 @@ button:hover {
     padding: 16px;
 }
 
+/* Product Grid Container Styling */
+.grid-container {
+    margin: auto;
+    width: 60%;
+    border: 2px solid red;
+}
+
+/* Product Grid Item Styling */
+.grid-item {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+	border: 2px solid black;
+    margin: 20px;
+}
+
+.quantity-box {
+    width: 20%;
+    margin: 10px;
+    text-align: right;
+}
+
+/* Add/Remove style overrides global button style */
+.add-button, .remove-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 15px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -72,6 +106,11 @@ button:hover {
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Main Page */
+.main {
+	display: none; /* Hidden by default */
 }
 
 /* Style the horizontal ruler */
@@ -101,6 +140,13 @@ hr {
     content: "";
     clear: both;
     display: table;
+}
+
+.promo-container {
+}
+
+/* Promo Code Box */
+.promo-box {
 }
 
 /* Change styles for cancel button and signup button on extra small screens */
