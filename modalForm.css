@@ -46,7 +46,7 @@ button {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
-button:hover {
+button:hover, button:focus, button:active {
     background-color: #2098D1;
     color: white;
 }
@@ -63,7 +63,7 @@ hr.light {
     border-color: #fff;
 }
 
-h1, h2,h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, span {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -76,10 +76,10 @@ label {
 }
 
 header.landing {
-    padding-top: 10rem;
-    padding-bottom: calc(10rem - 56px);
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/ecommerce-user-db.appspot.com/o/Sunset-silhouette-of-Santa-Barbaras-East-Beach-palm-trees.jpg?alt=media&token=c6ae2ee0-bff4-487e-b97e-3cd986859030");
-    background-position: center center;
+    padding-top: 20rem;
+    padding-bottom: calc(25rem - 56px);
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/ecommerce-user-db.appspot.com/o/Background_EastBeach_mediumjpg.jpg?alt=media&token=2e3b76c0-f697-49b1-a1fa-3d4c8290f5cd");
+    background-position: no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -91,7 +91,7 @@ header.landing hr {
     margin-bottom: 30px;
 }
 
-header.landing h1, h2 {
+header.landing h1 {
     text-transform: uppercase;
     color: white;
     font-size: 2rem;
@@ -111,9 +111,32 @@ header.landing p {
     margin: 10px;
 }
 
-.btn:hover, .btn:focus, .btn:active {
-  background-color: #2098D1;
-  color: white;
+.formbtn {
+    background-color: white;
+    color: lightblue;
+    padding: 5px 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+    opacity: 0.9;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.formbtn:hover, .formbtn:focus, .formbtn:active {
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    overflow: hidden;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: color, background-color;
+    transition-property: color, background-color;
+    background-color: #2098D1;
+    color: white;
 }
 
 /* Extra styles for the cancel button */
@@ -126,8 +149,7 @@ header.landing p {
 .cancelbtn, .signupbtn {
     float: left;
     width: 40%;
-
-    margin: 10px;
+    margin: 5px;
 }
 
 /* Add padding to container elements */
@@ -138,8 +160,11 @@ header.landing p {
 /* Product Grid Container Styling */
 .grid-container {
     margin: auto;
-    width: 60%;
-    border: 2px solid red;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    width: 90%;
+    box-shadow: 5px 10px 18px #888888;
+    text-align: center;
 }
 
 /* Product Grid Item Styling */
@@ -147,27 +172,76 @@ header.landing p {
     display: inline-block;
     width: 30%;
     text-align: center;
-    border: 2px solid black;
+    border-radius: 10px;
+    border: 3px solid lightblue;
     margin: 20px;
 }
 
 .quantity-box {
-    width: 20%;
+    height: 30px;
+    width: 60px;
+    padding: 2px;
     margin: 10px;
     text-align: right;
+    border: 2px solid lightblue;
+    border-radius: 2px;
+    text-align: center;
 }
 
 /* Add/Remove style overrides global button style */
 .add-button, .remove-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 15px;
-    margin: 8px 0;
-    border: none;
+    background-color: white;
+    color: lightblue;
+    padding: 5px 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border: 2px solid lightblue;
     cursor: pointer;
-    width: 20%;
+    width: 30px;
     opacity: 0.9;
 }
+.promo-container {
+    float: left;
+    border: 2px solid lightblue;
+    border-radius: 2px;
+    width: 40%;
+    display: block;
+    margin: 20px;
+}
+
+.promo-label {
+    display: block;
+    margin: 10px;
+}
+
+/* Individual element overrides */
+#promo-entry-box {
+    display: inline-block;
+    margin: 10px;
+    width: 70%;
+}
+
+#apply-button {
+    display: inline-block;
+    margin: 10px;
+}
+
+#checkout-button {
+    width: auto;
+    font-size: 30px;
+    text-transform: capitalize;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#logout-button {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+}
+
+/* Always should be top right */
+/* logout container + name + logout button */
 
 /* The Modal (background) */
 .modal {
@@ -185,7 +259,7 @@ header.landing p {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 20% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: none;
     box-shadow: 5px 10px 18px #888888;
     border-radius: 10px;
@@ -201,14 +275,13 @@ header.landing p {
 /* The Close Button (x) */
 .close {
     position: relative;
-    right: 380px;
-    top: 80px;
+    right: 340px;
+    top: 260px;
     font-size: 40px;
     font-weight: bold;
     color: black;
     float: right;
 }
-
 
 .close:hover,
 .close:focus {
@@ -221,13 +294,6 @@ header.landing p {
     content: "";
     clear: both;
     display: table;
-}
-
-.promo-container {
-}
-
-/* Promo Code Box */
-.promo-box {
 }
 
 /* Change styles for cancel button and signup button on extra small screens */

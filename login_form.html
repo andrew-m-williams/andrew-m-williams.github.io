@@ -149,14 +149,14 @@
 		<div>
 		
 		<!-- Product container that holds products from database -->
-		<div class="grid-container" id="product_container"></div><br><br>
+		<div class="grid-container" id="product_container"></div>
 
-		<div class="promo-container">
-			<label for="promo-entry-box">Have a promo code?:</label>
-			<input id="promo-entry-box" class="promo-box" type="text" name="promo_field">
-			<input type="submit" name="submit_button" value="Apply" onclick="validatePromoCode()">
-			<label id="promo-message"></label>
-		</div><br><br>
+		<div class="promo-container flex">
+			<label class="promo-label" for="promo-entry-box">Have a promo code?:</label>
+			<input class="promo-box" id="promo-entry-box" type="text" name="promo_field">
+			<input id="apply-button" class="formbtn" type="submit" name="submit_button" value="Apply" onclick="validatePromoCode()">
+			<label class="promo-message"></label>
+		</div>
 
 		<!-- Container to hold total price and quantity of items -->
 		<div id="total-container">
@@ -164,13 +164,13 @@
 			<!-- label-->
 			<!-- label-->
 			<label id="total-price"><b>Total Price: </b></label><label id="total-price-value"><b>0.00</b></label> 
-		</div><br><br>
+		</div>
 
-		<button id="checkout-button" type="button" onclick="checkoutItems()">Checkout</button>
+		<button id="checkout-button" class="formbtn" type="button" onclick="checkoutItems()">Checkout</button>
 
 		<div id="nano-button"></div>
 
-		<input type="button" name="logout_button" value="Log Out" onclick="handleSignOut()">
+		<input id="logout-button" class="formbtn" type="button" name="logout_button" value="Log Out" onclick="handleSignOut()">
 
 	</div>
 

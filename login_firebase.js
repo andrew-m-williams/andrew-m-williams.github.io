@@ -265,6 +265,8 @@ function checkoutItems()
 	var quantityBoxes = document.getElementsByClassName("quantity-box");
 	var priceValues = document.getElementsByClassName("price-value");
 
+	// TODO: Check if all quantitie are zero: nothing purchased. 
+
 	// Total quantity is all items in the quantity boxes
 
 	// Total price is quantity of the item multiplied by its price
