@@ -58,9 +58,9 @@
 	<div id="loginForm">
 		<header class="landing">
 			<div class="landing-container">
-				<h1><strong>E-Commerce</strong></h1>
+				<h1><strong>The Block Market</strong></h1>
 				<hr>
-				<p class="text-faded">Welcome to your crypto ecommerce shop!</p>
+				<p class="text-faded">Your number one shop for popular items, utilizing one of the fastest blockchain technologies around!</p>
 
 				<!-- Login button Stylized -->
 				<button class="landingbtn" onclick="document.getElementById('modalFormLogin').style.display='block'"
@@ -94,13 +94,13 @@
 					<input id="signUpPassword" type="password" placeholder="Enter Password" name="password" required>
 
 					<label for="passwordRepeat"><b>Repeat Password</b></label>
-					<input id="passwordRepear" type="password" placeholder="Repeat Password" name="passwordRepeat" required>
+					<input id="passwordRepeat" type="password" placeholder="Repeat Password" name="passwordRepeat" required>
 
 					<label>
 						<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">Remember Me
 					</label>
 
-					<p> By creating an account, you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+					<p>By creating an account, you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
 					<div class="clearfix">
 						<button type="button" onclick="document.getElementById('modalFormSignUp').style.display='none'" class="cancelbtn">Cancel</button>
@@ -144,34 +144,83 @@
 
 	<!-- Main Form container for ecommerce -->
 	<div id="mainForm" class="main">
-		<h1>Brainblocks Ecommerce Store</h1>
+		<h1>The Block Market</h1>
 		<h2>Welcome to the store, <span id="displayNameField">null</span>!</h2> 
 		<div>
 		
 		<!-- Product container that holds products from database -->
 		<div class="grid-container" id="product_container"></div>
 
-		<div class="promo-container flex">
+		<!-- Button to update user cart -->
+		<!-- TODO: Any updates to user cart are stored in user's session -->
+		<button id="update-cart-button" class="formbtn actionbtn" type="button" onclick="updateCart()">Update Cart</button>
+
+
+		<div class="promo-container">
 			<label class="promo-label" for="promo-entry-box">Have a promo code?:</label>
 			<input class="promo-box" id="promo-entry-box" type="text" name="promo_field">
 			<input id="apply-button" class="formbtn" type="submit" name="submit_button" value="Apply" onclick="validatePromoCode()">
-			<label class="promo-message"></label>
+			<label id="promo-message" class="promo-message"></label>
 		</div>
 
 		<!-- Container to hold total price and quantity of items -->
-		<div id="total-container">
-			<!-- More stuff showing item name and quantity -->
-			<!-- label-->
-			<!-- label-->
-			<label id="total-price"><b>Total Price: </b></label><label id="total-price-value"><b>0.00</b></label> 
+		<div class="shopping-bag" id="shopping-bag">
+			<label><b>Cart:</b></label>
+			<div class "bagged-items" id="bagged-items"></div>
+			<div class="total-label">
+				<label id="subtotal-price"><b>Subtotal: </b></label><label id="subtotal-price-value"><b></b></label>
+				<label id="total-promo-message" class="promo-message"></label>
+			</div> 
+			<div class="total-label">
+				<label id="total-price"><b>Total: </b></label><label id="total-price-value"><b></b></label> 
+			</div>
 		</div>
 
-		<button id="checkout-button" class="formbtn" type="button" onclick="checkoutItems()">Checkout</button>
-
-		<div id="nano-button"></div>
+		<button id="checkout-button" class="formbtn actionbtn" type="button" onclick="checkoutUser()">Checkout</button>
 
 		<input id="logout-button" class="formbtn" type="button" name="logout_button" value="Log Out" onclick="handleSignOut()">
+	</div>
 
+	<div id="checkoutForm" class="checkout">
+		<div class="container">
+			<h1>Checkout</h1>
+			<p>Enter shipping details below.</p>
+			<hr>
+			<label for="firstName"><b>First Name</b></label>
+			<input id="checkout-firstName" type="text" placeholder="Enter First Name" required>
+
+			<label for="lastName"><b>Last Name</b></label>
+			<input id="checkout-lastName" type="text" placeholder="Enter Last Name" required>
+
+			<label for="address-line1"><b>Address 1</b></label>
+			<input id="address-line1" type="text" placeholder="Address 1" required>
+
+			<label for="address-line2"><b>Address 2</b></label>
+			<input id="address-line2" type="text" placeholder="Address 2" required>
+
+			<label for="city-line"><b>City</b></label>
+			<input id="city-line" type="text" placeholder="City" required>
+
+			<label for="state-line"><b>State</b></label>
+			<input id="state-line" type="text" placeholder="State" required>
+
+			<label for="zip-line"><b>Zip/Postal Code</b></label>
+			<input id="zip-line" type="text" placeholder="Zip/Postal Code" required>
+
+			<button id="ship-button" class="formbtn" type="button" onclick="handleShipping()">Ship to this address</button>
+		</div>
+	</div>
+
+	<div id="paymentForm" class="payment">
+		<div class="container">
+			<h1>Payment</h1>
+			<p>Pay using NANO below.</p>
+			<hr>
+			<div id="nano-button"></div>
+		</div>
+
+		<!-- Final button to submit payment and shipping -->
+		<button id="confirm-purchase-button" class="formbtn" type="button" onclick="handlePurchase()">Confirm purchase</button>
 	</div>
 
 	<!-- Script to close modal form when user clicks outside of it -->	
