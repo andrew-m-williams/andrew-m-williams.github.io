@@ -92,6 +92,42 @@ function handleSignOut()
 
 function handleShipping()
 {
+	// Check for valid user input
+	var firstName = document.getElementById('checkout-firstName').value;
+	var lastName = document.getElementById('checkout-lastName').value;
+	var address1 = document.getElementById('address-line1').value;
+	var address2 = document.getElementById('address-line2').value;
+	var city = document.getElementById('city-line').value;
+	var state = document.getElementById('state-line').value;
+	var zip = document.getElementById('zip-line').value;
+	
+	if (firstName.length <= 0) {
+		alert('Please enter a valid first name.')
+		return;
+	}
+	if (lastName.length <= 0) {
+		alert('Please enter a valid last name.')
+		return;
+	}
+	if (address1.length <= 0) {
+		alert('Please enter a valid address.')
+		return;
+	}
+	if (city.length <= 0) {
+		alert('Please enter a valid city.')
+		return;
+	}
+	if (state.length <= 0) {
+		alert('Please enter a valid state.')
+		return;
+	}
+	if (zip.length <= 0) {
+		alert('Please enter a valid zip.')
+		return;
+	}					
+
+	// TODO: Improve error checking by verifying address and supplying user with valid address
+	
 	displayPaymentForm();
 }
 
@@ -229,6 +265,11 @@ function displayMainForm(currentUser)
 
 	// Display the products
 	var product_container= document.getElementById('product_container');
+
+	// Clear out any items present
+	product_container.innerHTML = "";
+	
+	// Render products
 	getProducts(product_container);
 
 	// Initialize the promo codes

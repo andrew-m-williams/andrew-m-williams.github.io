@@ -1,0 +1,33 @@
+/* Syling for promo code elements */
+.promo-container {
+    position: relative;
+    left: 660px;
+    display: block;
+    border: 2px solid lightblue;
+    border-radius: 2px;
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+.promo-label {
+    display: block;
+    margin: 10px;
+}
+
+.promo-message {
+    display: block;
+    margin: 10px;
+}
+
+/* Individual element overrides */
+#promo-entry-box {
+    display: inline-block;
+    margin: 10px;
+    width: 70%;
+    height: 10px;
+}
+
+#apply-button {
+    display: inline-block;
+    margin: 10px;
+}

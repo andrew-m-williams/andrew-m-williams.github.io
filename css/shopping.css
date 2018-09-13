@@ -1,0 +1,54 @@
+/* Styling for shopping bag, payment, totals, checkout */
+.shopping-bag {
+    display: block;
+    border: 2px solid lightblue;
+    border-radius: 2px;
+    width: 40%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.shopping-bag {
+    display: block;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.bagged-item-label {
+    display: block;
+    margin: 10px;
+}
+
+.total-label {
+    display: block;
+    margin; 10px;
+}
+
+.checkout {
+    display: none;
+}
+
+.payment {
+    display: none;
+    margin: 10px;
+}
+
+#subtotal-price-value, #total-price-value {
+    font-weight: bold;
+}
+
+#ship-button {
+    display: block;
+    width: auto;
+    padding: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#confirm-purchase-button {
+    display: none;
+    padding: 10px;
+    margin: 10px;
+    width: auto;
+}

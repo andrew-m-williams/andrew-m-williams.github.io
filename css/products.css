@@ -1,0 +1,47 @@
+/* Product Grid Container Styling */
+.grid-container {
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    width: 90%;
+    box-shadow: 5px 10px 18px #888888;
+    text-align: center;
+}
+
+/* Product Grid Item Styling */
+.grid-item {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+    border: 3px solid lightblue;
+    margin: 20px;
+}
+
+.quantity-box {
+    height: 30px;
+    width: 60px;
+    padding: 2px;
+    margin: 10px;
+    text-align: right;
+    border: 2px solid lightblue;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.item-image {
+    margin: 20px;
+}
+
+/* Add/Remove style overrides global button style */
+.add-button, .remove-button {
+    background-color: white;
+    color: lightblue;
+    padding: 5px 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border: 2px solid lightblue;
+    cursor: pointer;
+    width: 30px;
+    opacity: 0.9;
+}

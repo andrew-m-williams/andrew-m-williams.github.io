@@ -1,9 +1,248 @@
 <!DOCTYPE html>
 
 <html>
+<head>
+	<!-- Link to stylesheets for this app -->
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/products.css">
+	<link rel="stylesheet" href="css/promo.css">
+	<link rel="stylesheet" href="css/shopping.css">
+
+	
+	<title>Login Form</title>
+
+	<!-- Firebase App is always required and must be first -->
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-app.js"></script>
+
+	<!-- Add additional services that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+
+    <!-- Custom fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+
+	<script>
+		// Initialize Firebase
+		var config = {
+		apiKey: "AIzaSyDEWTAiZ3zPnaynYDorI_oWps1BAyAwkHk",
+		authDomain: "ecommerce-user-db.firebaseapp.com",
+		databaseURL: "https://ecommerce-user-db.firebaseio.com",
+		projectId: "ecommerce-user-db",
+		storageBucket: "ecommerce-user-db.appspot.com",
+		messagingSenderId: "395225262852"
+		};
+		var app = firebase.initializeApp(config);
+		var db = firebase.firestore();
+
+		db.settings({
+		  timestampsInSnapshots: true
+		});
+
+	</script>
+
+	<!-- Brainblocks API/Integration-->	
+	<script src="https://brainblocks.io/brainblocks.min.js"></script>
+
+	<script type="text/javascript" src="main.js"></script>
+	
+	<!-- Initialize the app; Login form if user signed out/unregistered, Main form if signed in -->
+	<script>     
+		window.onload = function() {
+      		initApp();
+    	};
+	</script>
+
+</head>
 <body>
+	<div id="loginForm">
+		<header class="landing">
+			<div class="landing-container">
+				<h1><strong>The Block Market</strong></h1>
+				<hr>
+				<p class="text-faded">Your number one ecommerce site for popular items, utilizing one of the fastest blockchain technologies around!</p>
 
-<button type="button">Login</button>
+				<!-- Login button Stylized -->
+				<button class="landingbtn" onclick="document.getElementById('modalFormLogin').style.display='block'"
+				style="width:auto;">Login</button>
 
+				<!-- Sign Up button Stylized -->
+				<button class="landingbtn" onclick="document.getElementById('modalFormSignUp').style.display='block'"
+				style="width:auto;">Sign Up</button>
+			</div>
+		</header>
+
+		<!-- Modal Form container for Sign Ups -->
+		<div id="modalFormSignUp" class="modal">
+			<div class="modal-content">
+				<div class="container">
+					<span onclick="document.getElementById('modalFormSignUp').style.display='none'"
+					class="close" title="Close Modal">&times;</span>
+					<h1>Sign Up</h1>
+					<p>Create a new account below.</p>
+					<hr>
+					<label for="firstName"><b>First Name</b></label>
+					<input id="firstName" type="text" placeholder="Enter First Name" name="firstName" required>
+
+					<label for="lastName"><b>Last Name</b></label>
+					<input id="lastName" type="text" placeholder="Enter Last Name" name="lastName" required>
+
+					<label for="signUpEmail"><b>Email</b></label>
+					<input id="signUpEmail" type="text" placeholder="Enter Email" name="email" required>
+
+					<label for="signUpPassword"><b>Password</b></label>
+					<input id="signUpPassword" type="password" placeholder="Enter Password" name="password" required>
+
+					<label for="passwordRepeat"><b>Repeat Password</b></label>
+					<input id="passwordRepeat" type="password" placeholder="Repeat Password" name="passwordRepeat" required>
+
+					<label>
+						<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">Remember Me
+					</label>
+
+					<p>By creating an account, you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+					<div class="clearfix">
+						<button type="button" onclick="document.getElementById('modalFormSignUp').style.display='none'" class="cancelbtn">Cancel</button>
+						<button type="submit" class="signupbtn" onclick="handleSignUp()">Sign Up</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Login Form container for Logins -->
+		<div id="modalFormLogin" class="modal">
+			<div class="modal-content">
+				<div class="container">
+					<span onclick="document.getElementById('modalFormLogin').style.display='none'"
+					class="close" title="Close Modal">&times;</span>
+					<h1>Login</h1>
+					<p>Login to an existing account below.</p>
+					<hr>
+					<label for="loginEmail"><b>Email</b></label>
+					<input id="loginEmail" type="text" placeholder="Enter Email" name="email" required>
+
+					<label for="loginPassword"><b>Password</b></label>
+					<input id="loginPassword" type="password" placeholder="Enter Password" name="password" required>
+
+					<label>
+						<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">Remember Me
+					</label>
+
+					<div class="clearfix">
+						<button type="button" onclick="document.getElementById('modalFormLogin').style.display='none'"
+						class="cancelbtn">Cancel</button>
+						<button type="submit" class="signupbtn" onclick="handleSignIn()">Login</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- !!! TO DO: Cleanup Input buttons vs Button html-->
+
+
+	<!-- Main Form container for ecommerce -->
+	<div id="mainForm" class="main">
+		<div class='main-banner'>
+			<img class="banner-img" src="https://firebasestorage.googleapis.com/v0/b/ecommerce-user-db.appspot.com/o/blockchain_wide.jpg?alt=media&token=d19100eb-5126-42fa-874e-44bc52fd39c6">
+			<div class="banner-text">
+				<h1>The Block Market</h1>
+			</div> 
+		</div>
+
+		<h2>Welcome to the store, <span id="displayNameField">null</span>!</h2>
+
+		<!-- Product container that holds products from database -->
+		<div class="grid-container" id="product_container"></div>
+
+		<!-- Button to update user cart -->
+		<!-- TODO: Any updates to user cart are stored in user's session -->
+		<button id="update-cart-button" class="formbtn actionbtn" type="button" onclick="updateCart()">Update Cart</button>
+
+
+		<div class="promo-container">
+			<label class="promo-label" for="promo-entry-box">Have a promo code?:</label>
+			<input class="promo-box" id="promo-entry-box" type="text" name="promo_field">
+			<input id="apply-button" class="formbtn" type="submit" name="submit_button" value="Apply" onclick="validatePromoCode()">
+			<label id="promo-message" class="promo-message"></label>
+		</div>
+
+		<!-- Container to hold total price and quantity of items -->
+		<div class="shopping-bag" id="shopping-bag">
+			<label><b>Cart:</b></label>
+			<div class "bagged-items" id="bagged-items"></div>
+			<div class="total-label">
+				<label id="subtotal-price"><b>Subtotal: </b></label><label id="subtotal-price-value"><b></b></label>
+				<label id="total-promo-message" class="promo-message"></label>
+			</div> 
+			<div class="total-label">
+				<label id="total-price"><b>Total: </b></label><label id="total-price-value"><b></b></label> 
+			</div>
+		</div>
+
+		<button id="checkout-button" class="formbtn actionbtn" type="button" onclick="checkoutUser()">Checkout</button>
+
+		<input id="logout-button" class="formbtn" type="button" name="logout_button" value="Log Out" onclick="handleSignOut()">
+	</div>
+
+	<div id="checkoutForm" class="checkout">
+		<div class="container">
+			<h1>Checkout</h1>
+			<p>Enter shipping details below.</p>
+			<hr>
+			<label for="firstName"><b>First Name</b></label>
+			<input id="checkout-firstName" type="text" placeholder="Enter First Name" required>
+
+			<label for="lastName"><b>Last Name</b></label>
+			<input id="checkout-lastName" type="text" placeholder="Enter Last Name" required>
+
+			<label for="address-line1"><b>Address 1</b></label>
+			<input id="address-line1" type="text" placeholder="Address 1" required>
+
+			<label for="address-line2"><b>Address 2</b></label>
+			<input id="address-line2" type="text" placeholder="Address 2" required>
+
+			<label for="city-line"><b>City</b></label>
+			<input id="city-line" type="text" placeholder="City" required>
+
+			<label for="state-line"><b>State</b></label>
+			<input id="state-line" type="text" placeholder="State" required>
+
+			<label for="zip-line"><b>Zip/Postal Code</b></label>
+			<input id="zip-line" type="text" placeholder="Zip/Postal Code" required>
+
+			<button id="ship-button" class="formbtn" type="button" onclick="handleShipping()">Ship to this address</button>
+		</div>
+	</div>
+
+	<div id="paymentForm" class="payment">
+		<div class="container">
+			<h1>Payment</h1>
+			<p>Pay using NANO below.</p>
+			<hr>
+			<div id="nano-button"></div>
+		</div>
+
+		<!-- Final button to submit payment and shipping -->
+		<button id="confirm-purchase-button" class="formbtn" type="button" onclick="handlePurchase()">Confirm purchase</button>
+	</div>
+
+	<!-- Script to close modal form when user clicks outside of it -->	
+	<script>
+	var modalLogin = document.getElementById('modalFormLogin');
+	var modalSignUp = document.getElementById('modalFormSignUp');
+
+	window.onclick = function(event) {
+		if(event.target == modalLogin) {
+			modalLogin.style.display = "none";
+		} else if(event.target == modalSignUp) {
+			modalSignUp.style.display = "none";
+		}
+	}
+	</script>
 </body>
 </html>

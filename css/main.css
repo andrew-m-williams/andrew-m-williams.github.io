@@ -1,6 +1,8 @@
 /* CSS Style for Modal Form */
 
-body {font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;}
+body {
+    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
 * {box-sizing: border-box;}
 
 /* Full-width input fields */
@@ -51,6 +53,12 @@ button:hover, button:focus, button:active {
     color: white;
 }
 
+button:disabled, button[disabled], button[disabled]:hover {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
 
 /* Style the horizontal ruler */
 hr {
@@ -139,6 +147,16 @@ header.landing p {
     color: white;
 }
 
+.actionbtn {
+    display: block;
+    width: auto;
+    margin: 20px;
+    font-size: 20px;
+    text-transform: capitalize;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
     padding: 14px 20px;
@@ -157,81 +175,9 @@ header.landing p {
     padding: 16px;
 }
 
-/* Product Grid Container Styling */
-.grid-container {
-    margin: auto;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    width: 90%;
-    box-shadow: 5px 10px 18px #888888;
+#nano-button {
     text-align: center;
-}
-
-/* Product Grid Item Styling */
-.grid-item {
-    display: inline-block;
-    width: 30%;
-    text-align: center;
-    border-radius: 10px;
-    border: 3px solid lightblue;
     margin: 20px;
-}
-
-.quantity-box {
-    height: 30px;
-    width: 60px;
-    padding: 2px;
-    margin: 10px;
-    text-align: right;
-    border: 2px solid lightblue;
-    border-radius: 2px;
-    text-align: center;
-}
-
-/* Add/Remove style overrides global button style */
-.add-button, .remove-button {
-    background-color: white;
-    color: lightblue;
-    padding: 5px 5px;
-    margin-left: 2px;
-    margin-right: 2px;
-    border: 2px solid lightblue;
-    cursor: pointer;
-    width: 30px;
-    opacity: 0.9;
-}
-.promo-container {
-    float: left;
-    border: 2px solid lightblue;
-    border-radius: 2px;
-    width: 40%;
-    display: block;
-    margin: 20px;
-}
-
-.promo-label {
-    display: block;
-    margin: 10px;
-}
-
-/* Individual element overrides */
-#promo-entry-box {
-    display: inline-block;
-    margin: 10px;
-    width: 70%;
-}
-
-#apply-button {
-    display: inline-block;
-    margin: 10px;
-}
-
-#checkout-button {
-    width: auto;
-    font-size: 30px;
-    text-transform: capitalize;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
 #logout-button {
@@ -258,6 +204,7 @@ header.landing p {
 
 /* Modal Content/Box */
 .modal-content {
+    position: relative;
     background-color: #fefefe;
     margin: 20% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: none;
@@ -265,18 +212,13 @@ header.landing p {
     border-radius: 10px;
     width: 50%; /* Could be more or less, depending on screen size */
 }
-
-/* The Main Page */
-.main {
-    display: none; /* Hidden by default */
-}
-
  
 /* The Close Button (x) */
 .close {
-    position: relative;
-    right: 340px;
-    top: 260px;
+    z-index: 1;
+    position: absolute;
+    top: 1px;
+    right: 20px;
     font-size: 40px;
     font-weight: bold;
     color: black;
@@ -295,6 +237,31 @@ header.landing p {
     clear: both;
     display: table;
 }
+
+/* The Main Page */
+.main {
+    display: none; /* Hidden by default */
+}
+
+.main-banner {
+    height: 200;
+    line-height: 80px;
+    width: 60%;
+    color: white;
+}
+
+.banner-text {
+    margin-left: 20px;
+    position: absolute;
+    top: 0px;
+    font-size: 40px
+}
+
+.banner-img {
+    position: relative;
+    max-width: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 30%,rgba(255,255,255,1) 100%);
+}  
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
